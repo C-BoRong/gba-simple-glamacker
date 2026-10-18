@@ -1,0 +1,44 @@
+{
+  "title": "我的故事",
+  "subtitle": "MY STORY",
+  "scenes": [
+    {"id": "room", "file": "images/bg/demo_00.png"}
+  ],
+  "portraits": [
+    {"id": "hero_normal", "name": "小夏", "file": "images/fg/guide.png", "x": 158, "y": 0, "flip_x": false, "matte": "alpha"}
+  ],
+  "variables": {"trust": 0},
+  "transition": {
+    "background_in": "fade", "background_out": "fade",
+    "character_in": "slide_right", "character_out": "slide_right", "frames": 16
+  },
+  "start": "opening",
+  "true_start": "epilogue",
+  "nodes": [
+    {
+      "id": "opening", "scene": "room", "character": "hero_normal",
+      "speaker": "小夏", "text": "欢迎来到你的故事。", "next": "decision"
+    },
+    {
+      "id": "decision", "scene": "room", "character": "hero_normal",
+      "speaker": "小夏", "text": "今天要一起出去走走吗？",
+      "choices": [
+        {"text": "一起出发", "next": "ending_a", "add": {"trust": 1}},
+        {"text": "留在这里", "next": "ending_b"}
+      ]
+    },
+    {
+      "id": "ending_a", "scene": "room", "character": false,
+      "speaker": "旁白", "text": "我们一起踏上了旅途。", "ending": "一起出发", "ending_id": 0
+    },
+    {
+      "id": "ending_b", "scene": "room", "character": false,
+      "speaker": "旁白", "text": "我们留下了新的约定。", "ending": "新的约定", "ending_id": 1
+    },
+    {
+      "id": "epilogue", "scene": "room", "character": "hero_normal",
+      "character_x": 18, "character_y": 0, "character_flip_x": true,
+      "speaker": "小夏", "text": "故事还会继续。", "ending": "真正的开始", "ending_id": 2
+    }
+  ]
+}

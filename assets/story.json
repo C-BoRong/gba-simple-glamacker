@@ -1,0 +1,236 @@
+{
+  "title": "潮声里的约定",
+  "subtitle": "STORY STUDIO DEMO",
+  "scenes": [
+    {
+      "id": "harbor",
+      "file": "images/bg/demo_00.png"
+    },
+    {
+      "id": "empty_harbor",
+      "file": "images/bg/demo_01.png"
+    },
+    {
+      "id": "sailing",
+      "file": "images/bg/demo_02.png"
+    },
+    {
+      "id": "sunset_ship",
+      "file": "images/bg/demo_03.png"
+    },
+    {
+      "id": "sea",
+      "file": "images/bg/demo_04.png"
+    },
+    {
+      "id": "sunset_sea",
+      "file": "images/bg/demo_05.png"
+    },
+    {
+      "id": "sunset_harbor",
+      "file": "images/bg/demo_06.png"
+    },
+    {
+      "id": "night",
+      "file": "images/bg/demo_07.png"
+    },
+    {
+      "id": "night_lights",
+      "file": "images/bg/demo_08.png"
+    }
+  ],
+  "character": {
+    "name": "澪",
+    "file": "images/fg/guide.png",
+    "x": 158,
+    "y": 0,
+    "matte": "alpha"
+  },
+  "start": "arrival",
+  "true_start": "true_arrival",
+  "nodes": [
+    {
+      "id": "arrival",
+      "scene": "harbor",
+      "speaker": "旁白",
+      "text": "夏日的海风，带来了久违的汽笛声。\n我在港口，看见了一个熟悉的身影。",
+      "next": "greeting"
+    },
+    {
+      "id": "greeting",
+      "scene": "harbor",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "你终于来了。\n我还以为，你已经忘记这个地方了。",
+      "next": "reply"
+    },
+    {
+      "id": "reply",
+      "scene": "harbor",
+      "character": "mio",
+      "speaker": "我",
+      "text": "怎么会忘记。\n说好一起看海的人，可是你啊。",
+      "next": "invitation"
+    },
+    {
+      "id": "invitation",
+      "scene": "harbor",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "那就陪我一会儿吧。\n今天，你想去哪里？",
+      "choices": [
+        {
+          "text": "一起乘船出海",
+          "next": "boat_departure",
+          "add": {
+            "bond": 1
+          },
+          "set": {
+            "route": 1
+          }
+        },
+        {
+          "text": "留在港口等日落",
+          "next": "stay",
+          "set": {
+            "route": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "boat_departure",
+      "scene": "sailing",
+      "speaker": "旁白",
+      "text": "船离开了码头，白色的浪花在身后散开。\n她站在我身旁，轻轻抓住了栏杆。",
+      "next": "boat_talk"
+    },
+    {
+      "id": "boat_talk",
+      "scene": "sea",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "小时候，总觉得海的另一边很遥远。\n现在和你一起看，好像也没那么远了。",
+      "branches": [
+        {
+          "var": "bond",
+          "op": ">=",
+          "value": 1,
+          "next": "boat_sunset"
+        }
+      ],
+      "else": "promise"
+    },
+    {
+      "id": "boat_sunset",
+      "scene": "sunset_ship",
+      "character": "mio",
+      "speaker": "我",
+      "text": "那下次，就去更远的地方吧。\n只要你愿意，我们可以慢慢走。",
+      "next": "promise"
+    },
+    {
+      "id": "promise",
+      "scene": "sunset_sea",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "嗯。那就约好了。\n下一次，也要一起听海的声音。",
+      "next": "sea_ending"
+    },
+    {
+      "id": "sea_ending",
+      "scene": "night_lights",
+      "speaker": "旁白",
+      "text": "归航的灯火，映在深蓝色的海面上。\n属于我们的故事，才刚刚开始。",
+      "ending": "逐浪的约定",
+      "ending_id": 0
+    },
+    {
+      "id": "stay",
+      "scene": "empty_harbor",
+      "character": "mio",
+      "speaker": "我",
+      "text": "今天就留在这里吧。\n有些风景，慢一点看才不会错过。",
+      "next": "stay_sunset"
+    },
+    {
+      "id": "stay_sunset",
+      "scene": "sunset_harbor",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "你还是和以前一样。\n不过，能这样待在一起……也很好。",
+      "next": "stay_reply"
+    },
+    {
+      "id": "stay_reply",
+      "scene": "sunset_harbor",
+      "character": "mio",
+      "speaker": "我",
+      "text": "明年的夏天，也在这里见面吧。\n到时候，我一定会比你先到。",
+      "next": "stay_night"
+    },
+    {
+      "id": "stay_night",
+      "scene": "night",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "那我就等着你。\n可不许再让我等那么久了。",
+      "next": "harbor_ending"
+    },
+    {
+      "id": "harbor_ending",
+      "scene": "night_lights",
+      "speaker": "旁白",
+      "text": "潮水轻轻拍着岸边，远处亮起了灯。\n我们把下一个夏天，悄悄留在了这里。",
+      "ending": "港湾的守候",
+      "ending_id": 1
+    },
+    {
+      "id": "true_arrival",
+      "scene": "harbor",
+      "speaker": "旁白",
+      "text": "又一个夏天，汽笛声划过清晨的海面。\n这一次，我比约定的时间更早来到港口。",
+      "next": "true_reunion"
+    },
+    {
+      "id": "true_reunion",
+      "scene": "harbor",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "原来你也记得。\n不管去多远，最后我们都能在这里相见。",
+      "next": "true_reply",
+      "wait": 30
+    },
+    {
+      "id": "true_reply",
+      "scene": "sunset_sea",
+      "character": "mio",
+      "speaker": "我",
+      "text": "这次的约定，没有最后一天。\n从今以后，每个夏天都一起看海吧。",
+      "next": "true_ending"
+    },
+    {
+      "id": "true_ending",
+      "scene": "night_lights",
+      "character": "mio",
+      "speaker": "澪",
+      "text": "嗯。只要潮声还在，我就会等你。\n我们的故事，会一直继续下去。",
+      "ending": "潮声永不落幕",
+      "ending_id": 2
+    }
+  ],
+  "variables": {
+    "bond": 0,
+    "route": 0
+  },
+  "portraits": [
+    {
+      "id": "mio",
+      "name": "澪",
+      "file": "images/fg/guide.png",
+      "x": 158,
+      "y": 0,
+      "matte": "alpha"
+    }
+  ]
+}

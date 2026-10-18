@@ -1,0 +1,25 @@
+{
+  "backgrounds": [
+    "images/ui/title.png",
+    "images/ui/title_unlocked.png"
+  ],
+  "buttons": "images/ui/buttons.png",
+  "button_width": 72,
+  "button_height": 13,
+  "columns": [
+    0,
+    72
+  ],
+  "rows": [
+    0,
+    13,
+    26,
+    39,
+    52,
+    65,
+    78
+  ],
+  "menu_x": 12,
+  "menu_y": 60,
+  "menu_spacing": 13
+}
